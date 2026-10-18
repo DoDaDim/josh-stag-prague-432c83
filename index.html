@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#132257">
+<title>Josh’s Stag · Prague</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="icon" href="assets/art/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/svg+xml" href="assets/art/favicon.svg">
+<link rel="apple-touch-icon" href="assets/art/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="fx" aria-hidden="true"></div>
+
+<header class="hero" data-art="assets/art/hero-bg.jpg" data-art-overlay="linear-gradient(rgba(30,27,58,.6),rgba(30,27,58,.6))">
+  <button id="josh" class="hero-art" type="button" aria-label="Tap Emperor Josh">
+    <picture>
+      <source media="(min-width: 700px)" srcset="assets/hero/hero-wide-notext.jpg" width="1280" height="720">
+      <img id="josh-img" src="assets/hero/hero-mobile-notext.jpg" alt="Cartoon Josh as a Greek emperor raising a beer over Prague" width="720" height="900">
+    </picture>
+  </button>
+
+  <p id="toast" role="status" aria-live="polite"></p>
+  <p class="tap-hint">Tap the emperor 👆</p>
+  <div class="hero-text">
+    <!-- Laurel crown: tap 3x for a surprise -->
+    <button id="laurel" type="button" aria-label="Golden laurel crown">
+      <svg viewBox="0 0 200 80" aria-hidden="true"><g transform="translate(0 84) scale(1 -1)" fill="#E6B53C" stroke="#B07D1E" stroke-width="1.5">
+        <path d="M100 70 C70 66 40 52 22 26" fill="none" stroke-width="4"/><path d="M100 70 C130 66 160 52 178 26" fill="none" stroke-width="4"/>
+        <ellipse cx="30" cy="34" rx="12" ry="5" transform="rotate(-50 30 34)"/><ellipse cx="44" cy="46" rx="12" ry="5" transform="rotate(-35 44 46)"/><ellipse cx="60" cy="56" rx="12" ry="5" transform="rotate(-20 60 56)"/><ellipse cx="78" cy="63" rx="12" ry="5" transform="rotate(-10 78 63)"/>
+        <ellipse cx="170" cy="34" rx="12" ry="5" transform="rotate(50 170 34)"/><ellipse cx="156" cy="46" rx="12" ry="5" transform="rotate(35 156 46)"/><ellipse cx="140" cy="56" rx="12" ry="5" transform="rotate(20 140 56)"/><ellipse cx="122" cy="63" rx="12" ry="5" transform="rotate(10 122 63)"/>
+        <ellipse cx="38" cy="24" rx="10" ry="4.5" transform="rotate(-80 38 24)"/><ellipse cx="162" cy="24" rx="10" ry="4.5" transform="rotate(80 162 24)"/>
+      </g></svg>
+    </button>
+    <p class="kicker">Veni · Vidi · Bibi</p>
+    <h1 id="hero-title">Hail, Emperor Josh</h1>
+    <p class="hero-sub">The Prague Stag · Fri 30 – Sat 31 October 2026</p>
+  </div>
+  <p id="hero-stops" class="hero-stops"></p>
+
+  <div id="countdown" class="countdown" data-state="tbc">
+    <p class="cd-label"><span class="ui" data-ui="clock">🕰</span> <span id="cd-label">Date TBC</span></p>
+    <div id="cd-digits" class="cd-digits" hidden>
+      <div><b id="cd-d">0</b><span>days</span></div><div><b id="cd-h">00</b><span>hrs</span></div><div><b id="cd-m">00</b><span>min</span></div><div><b id="cd-s">00</b><span>sec</span></div>
+    </div>
+    <p id="cd-sub" class="cd-sub"></p>
+  </div>
+</header>
+
+<nav class="quick" aria-label="Sections">
+  <a href="#next">Next</a><a href="#timeline">Plan</a><a href="#hq">HQ</a><a href="#rules">T-shirts</a><a href="#map-section">Map</a><a href="#attendees">Lads</a><a href="#meet">Josh</a>
+</nav>
+
+<main>
+  <section id="next" class="card highlight" data-state="tbc" aria-live="polite">
+    <p class="eyebrow"><span class="ui" data-ui="beer">🍺</span> What’s next?</p>
+    <h2 id="next-title">—</h2>
+    <p id="next-meta" class="meta"></p>
+    <p id="next-detail"></p>
+    <button id="next-go" class="btn" type="button">Open card</button>
+    <p class="clock"><span class="ui" data-ui="clock">🕰</span> <span id="next-clock"></span></p>
+  </section>
+
+  <div class="foam" aria-hidden="true" data-art="assets/art/foam-top.png" data-art-overlay="linear-gradient(180deg,transparent 0,transparent 40%,#E89A2C 40%,#C2701A)"></div>
+  <section id="timeline">
+    <div class="sec-h"><h2>The Plan</h2>
+      <button id="expand-all" class="btn small ghost" type="button">Expand all</button></div>
+    <p class="hint">Tap a card for details, maps &amp; menus.</p>
+    <div id="timeline-days"></div>
+    <div class="divider-wide" data-art="assets/art/divider-laurel.png"></div>
+  </section>
+
+  <div class="foam" aria-hidden="true" data-art="assets/art/foam-top.png" data-art-overlay="linear-gradient(180deg,transparent 0,transparent 40%,#E89A2C 40%,#C2701A)"></div>
+  <section id="hq" class="card plain">
+    <h2><span class="ui" data-ui="bed">🛏</span> Where’s Stag HQ?</h2>
+    <p><strong>Accommodation (Stag HQ):</strong> <span id="hq-name"></span></p>
+    <p><strong>Accommodation Address:</strong> <span id="hq-addr"></span></p>
+    <h3>Accommodation Bed Situation</h3>
+    <ul id="hq-rooms" class="beds"></ul>
+    <p><a id="hq-info" target="_blank" rel="noopener">More Info</a></p>
+  </section>
+
+  <div class="foam" aria-hidden="true" data-art="assets/art/foam-top.png" data-art-overlay="linear-gradient(180deg,transparent 0,transparent 40%,#E89A2C 40%,#C2701A)"></div>
+  <section id="rules" class="card scroll" data-art="assets/art/scroll-bg.png">
+    <p class="eyebrow"><span class="ui" data-ui="tshirt">👕</span> T-shirt Swap rules</p>
+    <h2><span class="ui big" data-ui="tshirt">👕</span> Random T-shirt Night</h2>
+    <p id="rules-intro"></p>
+    <ol id="rules-list" class="rules"></ol>
+    <h3>How it works</h3>
+    <ol id="rules-how" class="rules how"></ol>
+    <p id="rules-spares" class="spares"></p>
+  </section>
+
+  <div class="foam" aria-hidden="true" data-art="assets/art/foam-top.png" data-art-overlay="linear-gradient(180deg,transparent 0,transparent 40%,#E89A2C 40%,#C2701A)"></div>
+  <section id="map-section" class="card">
+    <p class="eyebrow"><span class="ui" data-ui="pin">📍</span> The Map</p>
+    <h2>Find your way</h2>
+    <div id="map" role="region" aria-label="Map of venues"></div>
+    <div class="actions"><button id="map-all" class="btn small ghost" type="button">Show all pins</button></div>
+    <div id="map-list" class="map-list"></div>
+    <p class="hint">Map data © OpenStreetMap contributors. Pins checked against each venue’s official address.</p>
+  </section>
+
+  <div class="foam" aria-hidden="true" data-art="assets/art/foam-top.png" data-art-overlay="linear-gradient(180deg,transparent 0,transparent 40%,#E89A2C 40%,#C2701A)"></div>
+  <section id="attendees" class="card">
+    <p class="eyebrow">⚔ The Legion</p>
+    <h2>Attendees (<span id="att-count"></span>)</h2>
+    <ul id="att-list" class="att"></ul>
+  </section>
+
+  <section id="meet" class="card">
+    <p class="eyebrow">🏛 Meet the Stag</p>
+    <h2>Josh, before the toga</h2>
+    <ul class="meet">
+      <li><span class="mframe" data-art="assets/art/laurel-frame.png"></span><img src="assets/josh-emperor.jpg" alt="Josh smiling" width="96" height="96" loading="lazy"></li>
+      <li><span class="mframe" data-art="assets/art/laurel-frame.png"></span><img src="assets/josh-athens-face.jpg" alt="Josh grinning in Athens" width="96" height="96" loading="lazy"></li>
+      <li><span class="mframe" data-art="assets/art/laurel-frame.png"></span><img src="assets/josh-cap-face.jpg" alt="Josh in a cap" width="96" height="96" loading="lazy"></li>
+    </ul>
+  </section>
+</main>
+
+<footer data-art="assets/art/foam-top.png" class="foot">
+  <p><span class="ui" data-ui="beer">🍺</span> Na zdraví! Anything marked <b>TBC</b> is still to be confirmed.</p>
+  <p class="credits">Sources: the organiser’s itinerary · venue addresses and menus from the venues’ own websites
+    (<a href="https://souvlakibar.cz/online-menu" target="_blank" rel="noopener">souvlakibar.cz</a>,
+    <a href="https://www.thepub.cz/praha-1" target="_blank" rel="noopener">thepub.cz</a>,
+    <a href="https://www.pilsnerexperience.com/en" target="_blank" rel="noopener">pilsnerexperience.com</a>,
+    <a href="https://www.kozlovna-apropos.cz/en/menu/" target="_blank" rel="noopener">kozlovna-apropos.cz</a>,
+    <a href="https://www.rockyoreillys.cz/contact" target="_blank" rel="noopener">rockyoreillys.cz</a>,
+    <a href="https://lokal-dlouha.ambi.cz/" target="_blank" rel="noopener">lokal-dlouha.ambi.cz</a>)
+    · map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors
+    · kick-off time from <a href="https://www.premierleague.com/en/news/4688862/fixture-amendments-for-premier-league-matches-in-october-and-november" target="_blank" rel="noopener">premierleague.com</a>.</p>
+</footer>
+
+<div id="cockerel" class="cockerel" hidden aria-hidden="true">
+  <div class="cock-strip" data-art="assets/art/cockerel-strip.png"></div>
+  <svg class="cock-svg" viewBox="0 0 120 120"><g stroke="#0b1430" stroke-width="3" stroke-linejoin="round">
+    <path d="M30 70 C10 50 18 22 34 30 C30 44 40 54 44 60Z" fill="#132257"/>
+    <ellipse cx="60" cy="68" rx="28" ry="22" fill="#fff"/>
+    <circle cx="82" cy="40" r="13" fill="#fff"/>
+    <path d="M76 27 l4 -9 l4 8 l5 -7 l2 10Z" fill="#d23a3a"/>
+    <path d="M94 40 l12 4 l-12 4Z" fill="#e8a33d"/>
+    <path d="M90 50 c2 8 -4 10 -5 4" fill="#d23a3a"/>
+    <circle cx="86" cy="37" r="2.5" fill="#0b1430" stroke="none"/>
+    <path d="M52 88 v18 m-6 0 h10 M68 88 v18 m-6 0 h10" fill="none" stroke="#e8a33d" stroke-width="4"/>
+    <path d="M48 64 c8 8 20 8 26 0" fill="none" stroke="#132257"/>
+  </g></svg>
+  <span class="crow">Cock-a-doodle-COYS!</span>
+</div>
+<p id="spurs-line" class="spurs-line" hidden></p>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>

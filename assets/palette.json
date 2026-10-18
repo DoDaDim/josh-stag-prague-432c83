@@ -1,0 +1,87 @@
+{
+  "_note": "Josh's Prague stag: Greek empire meets Prague beer night. CSS var = --<key>",
+  "imperial-purple": {
+    "name": "Imperial purple",
+    "hex": "#5B2A86"
+  },
+  "purple-light": {
+    "name": "Purple light",
+    "hex": "#8E5CC2"
+  },
+  "purple-deep": {
+    "name": "Purple deep",
+    "hex": "#3A1A5C"
+  },
+  "gold": {
+    "name": "Gold",
+    "hex": "#E6B53C"
+  },
+  "gold-light": {
+    "name": "Gold light",
+    "hex": "#F7D774"
+  },
+  "gold-deep": {
+    "name": "Gold deep",
+    "hex": "#B07D1E"
+  },
+  "marble-cream": {
+    "name": "Marble cream",
+    "hex": "#F5EEDC"
+  },
+  "marble-shade": {
+    "name": "Marble shade",
+    "hex": "#DCD0B6"
+  },
+  "marble-vein": {
+    "name": "Marble vein",
+    "hex": "#C9BBA0"
+  },
+  "beer-amber": {
+    "name": "Beer amber",
+    "hex": "#E89A2C"
+  },
+  "beer-deep": {
+    "name": "Beer deep",
+    "hex": "#C2701A"
+  },
+  "beer-foam": {
+    "name": "Beer foam",
+    "hex": "#FFF8E7"
+  },
+  "prague-red": {
+    "name": "Prague red",
+    "hex": "#C8102E"
+  },
+  "czech-blue": {
+    "name": "Czech blue",
+    "hex": "#11457E"
+  },
+  "night-navy": {
+    "name": "Night navy",
+    "hex": "#1E1B3A"
+  },
+  "dusk-rose": {
+    "name": "Dusk rose",
+    "hex": "#E58A8A"
+  },
+  "laurel-green": {
+    "name": "Laurel green",
+    "hex": "#6E8B3D"
+  },
+  "laurel-light": {
+    "name": "Laurel light",
+    "hex": "#9BB85A"
+  },
+  "ink": {
+    "name": "Ink (outlines/text)",
+    "hex": "#2B1B2E"
+  },
+  "spurs-navy": {
+    "name": "Spurs navy",
+    "hex": "#132257"
+  },
+  "spurs-white": {
+    "name": "Spurs white",
+    "hex": "#FFFFFF"
+  }
+}
