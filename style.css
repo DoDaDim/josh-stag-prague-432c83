@@ -192,3 +192,5 @@ body{overflow-wrap:break-word}
 .credits{font-size:.78rem;line-height:1.5}.credits a{color:inherit}
 .pin-img img{width:34px;height:34px}
 .nw{white-space:nowrap}
+
+.game-card{text-align:center}.btn-play{font-size:1.1rem;min-height:52px;padding:10px 22px;background:var(--amber);border-color:var(--gold2);color:var(--navy2);margin-top:4px}
