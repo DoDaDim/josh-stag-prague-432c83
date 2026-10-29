@@ -1,0 +1,12 @@
+html,body{margin:0;height:100%;overflow:hidden;background:#2b1055;touch-action:none;font-family:"Trebuchet MS",system-ui,sans-serif;-webkit-user-select:none;user-select:none}
+canvas{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;display:block}
+.ov{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:rgba(30,10,60,.78);padding:20px;box-sizing:border-box;overflow:auto}
+.hide{display:none}
+h1{font-size:44px;margin:0;color:#ffd34d;text-shadow:3px 3px 0 #a0522d;line-height:1}h2{font-size:40px;margin:0;color:#ffd34d;text-shadow:3px 3px 0 #a0522d}
+.sub{font-size:22px;margin:6px 0}.big{font-size:56px;margin:6px 0;font-weight:bold}
+p{font-size:15px;line-height:1.4;max-width:340px}
+button{font:inherit;font-size:20px;font-weight:bold;margin:6px;padding:12px 28px;border:0;border-radius:30px;background:#ffd34d;color:#5a2d00;box-shadow:0 4px 0 #a0522d}
+#again{background:#fff}input{font:inherit;font-size:18px;padding:10px;border-radius:12px;border:0;width:150px}
+.lb{background:rgba(255,255,255,.12);border-radius:14px;padding:8px 14px;margin:8px;min-width:220px;font-size:15px}
+.lb ol{margin:4px 0;padding-left:24px;text-align:left}#toast{color:#9f9;min-height:20px}
+.av img{width:40px;height:53px;margin:0 2px}.av{margin:4px 0}
